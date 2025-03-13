@@ -31,7 +31,8 @@ void assemble(char* code, int32_t *memory) {
     // Search valid opcode names
     for (int i = 0; i<Invalid; i++) {
       if (!strcmp(instruction_names[i], tokens[0])) {
-        // TODO: Set the instruction op after finding a matching name
+        instruction -> op = i;
+        break;
       }
     }
 
@@ -53,7 +54,8 @@ void assemble(char* code, int32_t *memory) {
     // Find immediate value if present
     for (int i = 1; i <= 3; i++) {
       if (tokens[i][0] != '\0' && tokens[i][0] != 'r') {
-        // TODO: Set the instruction immediate value
+        instruction -> immediate = atoi(tokens[i]);
+        break;
       }
     }
 
